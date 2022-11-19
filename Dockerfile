@@ -11,8 +11,11 @@ COPY . /app/
 COPY package.json .
 COPY package-lock.json .
 
-RUN npm install
-RUN npm install react-scripts@5.0.1 -g
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g react-tools
 
 # Build the app
 RUN npm run build

@@ -11,8 +11,7 @@ COPY . /app/
 COPY package.json .
 
 
-RUN npm install
-RUN npm install react-scripts@5.0.1 -g
+RUN npm install react-scripts -g --silent
 
 # Build the app
 RUN npm run build

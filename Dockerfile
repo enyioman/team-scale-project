@@ -9,13 +9,10 @@ COPY . /app/
 
 # Cache and Install dependencies
 COPY package.json .
-COPY package-lock.json .
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g react-tools
+
+RUN npm install
+RUN npm install react-scripts@5.0.1 -g
 
 # Build the app
 RUN npm run build
